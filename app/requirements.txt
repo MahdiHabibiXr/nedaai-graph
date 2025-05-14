@@ -1,0 +1,16 @@
+https://github.com/KurimuzonAkuma/pyrogram/archive/dev.zip
+TgCrypto
+requests
+replicate
+ufiles
+python-dotenv
+pymongo
+fastapi[standard]
+python-multipart
+pydantic
+uvicorn
+aiosqlite
+beanie
+motor
+logfire
+aiohttp

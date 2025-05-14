@@ -1,0 +1,56 @@
+services:
+  bot:
+    build: ./app
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./app:/app
+    # command: ["sleep","10000"]
+    networks:
+      - nedaai-mongo-net
+  # nedaai-mongo:
+  #   image: mongo:latest
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ./mongo-data:/data/db
+  #   networks:
+  #     - nedaai-mongo-net
+
+  # nedaai-redis:
+  #   image: redis:alpine
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ./redis-data:/data
+  #   networks:
+  #     - nedaai-redis-net
+
+  # mongo-express:
+  #   image: mongo-express
+  #   environment:
+  #     - ME_CONFIG_MONGODB_SERVER=nedaai-mongo
+  #     - ME_CONFIG_BASICAUTH_USERNAME=${ME_CONFIG_BASICAUTH_USERNAME}
+  #     - ME_CONFIG_BASICAUTH_PASSWORD=${ME_CONFIG_BASICAUTH_PASSWORD}
+  #   restart: unless-stopped
+  #   networks:
+  #     - nedaai-mongo-net
+  #     - traefik-net
+  #   labels:
+  #     - "traefik.enable=true"
+  #     - "traefik.http.routers.${PROJECT_NAME}-mongo-express.entrypoints=web"
+  #     - "traefik.http.routers.${PROJECT_NAME}-mongo-express.rule=Host(`mongo-${DOMAIN}`)"
+  #     - "traefik.http.routers.${PROJECT_NAME}-mongo-express-secure.entrypoints=websecure"
+  #     - "traefik.http.routers.${PROJECT_NAME}-mongo-express-secure.rule=Host(`mongo-${DOMAIN}`)"
+  #     - "traefik.http.routers.${PROJECT_NAME}-mongo-express-secure.tls=true"
+  #     - "traefik.http.routers.${PROJECT_NAME}-mongo-express-secure.tls.certresolver=letsencrypt"
+  #     - "traefik.http.services.${PROJECT_NAME}-mongo-express.loadbalancer.server.port=8081"
+  #     - "traefik.docker.network=traefik-net"
+
+
+networks:
+  nedaai-mongo-net:
+    name: nedaai-mongo-net
+  nedaai-redis-net:
+    name: nedaai-redis-net
+  # traefik-net:
+  #   external: true
