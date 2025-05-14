@@ -11,7 +11,7 @@ from pymongo import DESCENDING
 import logfire
 
 # configure logfire
-logfire.configure(token="x72xM2mT7gVB3xQXm7tHwtbDtkHHDyxPTGzJKyTzpYd0")
+logfire.configure(token="pylf_v1_us_twTVZHLXCZzLwrCJ292l3y5cgrsgN4t6DYfyCyTcMpWb")
 
 
 class Status(str, Enum):
