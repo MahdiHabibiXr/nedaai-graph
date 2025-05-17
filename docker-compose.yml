@@ -6,7 +6,6 @@ services:
       - .env
     volumes:
       - ./app:/app
-    # command: ["sleep","10000"]
     networks:
       - nedaai-mongo-net
     depends_on:
@@ -15,14 +14,10 @@ services:
   nedaai-mongo:
     image: mongo:latest
     restart: unless-stopped
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_PASSWORD='8j#bdA61D^FUs1U4&FZyRW~O'
     volumes:
       - ./mongo-data:/data/db
     ports:
       - "127.0.0.1:27017:27017"
-    command: ["--auth"]
     networks:
       - nedaai-mongo-net
 
