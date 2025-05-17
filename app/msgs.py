@@ -146,7 +146,7 @@ invite_successfully = (
     "🎁 {gift_credits} ثانیه اعتبار به شما تعلق گرفت.\n\n"
 )
 channels_list = ["@nedaaiofficial"]
-banner_img_id = "AgACAgQAAxkBAAILAmeVA8R4YjsLLh42tnXV2lfsUHX4AAJZxjEbdYGpUAjaRPN3EpG6AAgBAAMCAAN5AAceBA"
+banner_img_id = "AgACAgQAAxkBAAIBSmgohGpmJBBuP_IEg-rjfgpomsKzAAIfxzEbBmlAUZ0HBaw4EyBTAAgBAAMCAAN5AAceBA"
 gender_select = """
 👥 لطفا جنسیت صدای ورودی خود را انتخاب کنید:
 """
