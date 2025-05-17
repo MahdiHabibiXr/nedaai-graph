@@ -26,7 +26,7 @@ services:
     image: mongo-express:latest
     restart: unless-stopped
     ports:
-      - "8081:8081" # Access it via http://localhost:8081
+      - "8082:8081" # Access it via http://localhost:8081
     environment:
       - ME_CONFIG_MONGODB_SERVER=nedaai-mongo
       - ME_CONFIG_BASICAUTH_USERNAME=admin
