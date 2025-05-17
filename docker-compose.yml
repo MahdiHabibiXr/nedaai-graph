@@ -22,13 +22,12 @@ services:
       - "127.0.0.1:27017:27017"
     networks:
       - nedaai-mongo-net
-    # No auth — open access for internal services only
 
   mongo-express:
     image: mongo-express
     restart: unless-stopped
     environment:
-      - ME_CONFIG_MONGODB_SERVER=nedaai-mongo
+      - ME_CONFIG_MONGODB_SERVER=nedaai-mongo # 🟢 درست شد
       - ME_CONFIG_MONGODB_ENABLE_ADMIN=false
       - ME_CONFIG_BASICAUTH_USERNAME=admin
       - ME_CONFIG_BASICAUTH_PASSWORD=your_password_here
