@@ -14,24 +14,24 @@ services:
   nedaai-mongo:
     image: mongo:latest
     restart: unless-stopped
-    volumes/db
+    volumes:
+      - db:/data/db
     ports:
       - "127.0.0.1:27017:27017"
     networks:
       - nedaai-mongo-net
-    # no authentication — open access for internal services only
 
   mongo-express:
     image: mongo-express
     restart: unless-stopped
     environment:
-      - ME_CONFIG_MONGODB_SERVER=nedaai-mongo # Use your mongo service name here
+      - ME_CONFIG_MONGODB_SERVER=nedaai-mongo
       - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
-      - ME_CONFIG_MONGODB_ADMINPASSWORD= # empty because your mongo has no password
-      - ME_CONFIG_BASICAUTH_USERNAME=admin # mongo-express login user
-      - ME_CONFIG_BASICAUTH_PASSWORD=your_password_here # mongo-express login pass
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=
+      - ME_CONFIG_BASICAUTH_USERNAME=admin
+      - ME_CONFIG_BASICAUTH_PASSWORD=your_password_here
     ports:
-      - "8082:8081"  # Changed from 8081:8081 to 8082:8081
+      - "8082:8081"
     networks:
       - nedaai-mongo-net
     depends_on:
@@ -40,3 +40,6 @@ services:
 networks:
   nedaai-mongo-net:
     name: nedaai-mongo-net
+
+volumes:
+  db:
