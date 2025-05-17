@@ -20,6 +20,22 @@ services:
       - "127.0.0.1:27017:27017"
     networks:
       - nedaai-mongo-net
+    # no authentication — open access for internal services only
+
+  mongo-express:
+    image: mongo-express:latest
+    restart: unless-stopped
+    ports:
+      - "8081:8081" # Access it via http://localhost:8081
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=nedaai-mongo
+      - ME_CONFIG_BASICAUTH_USERNAME=admin
+      - ME_CONFIG_BASICAUTH_PASSWORD=anP$26Q\q;wI8K9(Q7KOHwSu
+      # Auth is off for MongoDB, so no need to provide username/password for DB
+    depends_on:
+      - nedaai-mongo
+    networks:
+      - nedaai-mongo-net
 
 networks:
   nedaai-mongo-net:
