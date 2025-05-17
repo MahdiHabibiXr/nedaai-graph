@@ -14,9 +14,7 @@ services:
   nedaai-mongo:
     image: mongo:latest
     restart: unless-stopped
-    volumes:
-      
-      - 
+    volumes: # This maps container's data to a named volume
     ports:
       - "127.0.0.1:27017:27017"
     networks:
@@ -42,4 +40,4 @@ services:
 
 networks:
   nedaai-mongo-net:
-    name: nedaai-mongo-net
+    name: nedaai-mongo
