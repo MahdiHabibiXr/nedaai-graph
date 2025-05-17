@@ -19,24 +19,9 @@ services:
     volumes:
       - db:/data/db
     ports:
-      - "127.0.0.1:27017:27017"
+      - "0.0.0.0:27017:27017"
     networks:
       - nedaai-mongo-net
-
-  mongo-express:
-    image: mongo-express
-    restart: unless-stopped
-    environment:
-      - ME_CONFIG_MONGODB_SERVER=nedaai-mongo # 🟢 درست شد
-      - ME_CONFIG_MONGODB_ENABLE_ADMIN=false
-      - ME_CONFIG_BASICAUTH_USERNAME=admin
-      - ME_CONFIG_BASICAUTH_PASSWORD=your_password_here
-    ports:
-      - "8082:8081"
-    networks:
-      - nedaai-mongo-net
-    depends_on:
-      - nedaai-mongo
 
 networks:
   nedaai-mongo-net:
