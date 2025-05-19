@@ -424,14 +424,13 @@ async def callbacks(client: Client, callback_query: CallbackQuery):
                 task = data.replace("task_", "")
 
                 file = f"files/{chat_id}/voice.ogg"
-                # upload file to pixiee
-                # file_url = await upload_file(
-                #     file_path=file, file_name=f"nedaai/{chat_id}/input_voice.ogg"
-                # )
+                
                 try:
-                    file_url = await upload_file(
-                        file, file_name=f"nedaai/{chat_id}/input_voice.ogg"
-                    )
+                    # file_url = await upload_file(
+                    #     file, file_name=f"nedaai/{chat_id}/input_voice.ogg"
+                    # )
+                    file_url = await tapsage_upload(file)
+
                 except Exception as e:
                     logfire.error(f"Upload error: {e}")
                     await message.reply("خطا در آپلود فایل. لطفا بعدا تلاش کنید.")
