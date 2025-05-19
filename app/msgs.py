@@ -1,196 +1,192 @@
 start = (
-    "سلام👋 {username} عزیز خوش اومدید. \n\n"
-    "😎به کمک این ربات می‌تونید چند تا کار بکنید:\n\n"
-    "1. می‌تونید صداتون رو به صدای گوینده‌های حرفه‌ای، شخصیت‌های فیلم‌ها و انیمیشن‌ها و افراد مشهور تبدیل کنید.\n"
-    "2. می‌تونید صدای خواننده رو از صدای موزیک یک آهنگ جدا کنید (اگر می‌خواید خواننده یک موزیک رو عوض کنید، این گزینه به کارتون میاد)\n\n"
-    "✅برای شروع کافیه که یه ویس یا فایل صوتی برای من ارسال کنید. \n\n"
-    "‼️توجه داشته باشید که برای خروجی بهتر بخش تقلید صدا لازمه که صدایی که ارسال می‌کنید بدون نویز یا سر و صدای اضافی باشد."
+    "Hello👋 dear {username}, welcome.\n\n"
+    "😎With this bot you can do several things:\n\n"
+    "1. You can convert your voice to professional voiceovers, movie and animation characters, and celebrities.\n"
+    "2. You can separate the singer's voice from the music of a song (if you want to change the singer of a song, this option will help you)\n\n"
+    "✅To start, just send me a voice message or audio file.\n\n"
+    "‼️Note that for better voice cloning output, the audio you send should be without noise or extra sounds."
 )
-gift_msg = "🎁 {inital_credits} ثانیه اعتبار هدیه به شما تعلق گرفت. \n\n"
-joined_channels_btn = ["✅ عضو شدم", "callback", "joined_channels", 0]
+gift_msg = "🎁 You have been awarded {inital_credits} seconds of gift credit. \n\n"
+joined_channels_btn = ["✅ I Joined", "callback", "joined_channels", 0]
 join_channels = (
-    "🔻لطفا برای شروع در کانالهای زیر عضو شوید و روی دکمه عضو شدم کلیک کنید\n"
+    "🔻Please join the following channels to start and click the 'I Joined' button\n"
 )
-voice_select = "🎭 لطفا صدای مورد نظر خود را برای تبدیل انتخاب کنید\n\n**برای شنیدن نمونه صداها : /list**"
+voice_select = "🎭 Please select the voice you want to convert to\n\n**To hear voice samples: /list**"
 pitch_select = """
-🎙 تنظیم زیر و بمی صدا
+🎙 Adjust Voice Pitch
 
-📌در صورتیکه نیاز دارید صدای خروجی، بم‌تر یا زیرتر باشد، لطفا یکی از گزینه‌های زیر را انتخاب کنید
+📌If you need the output voice to be deeper or higher, please select one of the options below
 
-🔍 پیشنهاد می‌شود در ابتدا با گزینه **پیش‌فرض** یک صدا تولید کنید و بعد برای شباهت هر چه بیشتر به صدای انتخاب شده، زیر و بمی صدا را تغییر دهید.
+🔍 It is recommended to first generate a voice with the **default** option and then adjust the pitch for greater similarity to the selected voice.
 
 """
 pitch_btns = [
-    # ["🗣 تبدیل صدای زنانه به مردانه", "callback", "pitch_-12", 0],
-    # ["🔻 بم+9", "callback", "pitch_-9", 1],
-    ["🔺 بم‌تر", "callback", "pitch_-3", 1],
-    ["🔺 خیلی بم‌تر", "callback", "pitch_-6", 1],
-    ["🔸 بدون تغییر | پیش‌فرض", "callback", "pitch_0", 2],
-    # ["🔺 زیر+9", "callback", "pitch_9", 3],
-    ["🔻 زیرتر", "callback", "pitch_3", 3],
-    ["🔻 خیلی زیرتر", "callback", "pitch_6", 3],
-    # ["🧔‍♀️ تبدیل صدای مردانه به زنانه", "callback", "pitch_12", 4],
+    ["🔺 Deeper", "callback", "pitch_-3", 1],
+    ["🔺 Much Deeper", "callback", "pitch_-6", 1],
+    ["🔸 No Change | Default", "callback", "pitch_0", 2],
+    ["🔻 Higher", "callback", "pitch_3", 3],
+    ["🔻 Much Higher", "callback", "pitch_6", 3],
 ]
 proccessing_emojie = "⏳"
 proccessing = (
-    "🔄در حال پردازش درخواست شما ...\n\n"
-    "اعتبار مصرف شده برای این درخواست : **{used_credits} ثانیه**\n\n"
-    "**🔸 اعتبار باقی‌مانده شما: {credits} ثانیه**\n\n"
-    # "بازگشت به منوی اصلی : /menu"
+    "🔄Processing your request...\n\n"
+    "Credits used for this request: **{used_credits} seconds**\n\n"
+    "**🔸 Your remaining credits: {credits} seconds**\n\n"
 )
 proccessing_queue = (
-    "🔄 درخواست شما در صف پردازش قرار گرفت...\n\n"
-    "📊 شما نفر {queue}ام در صف پردازش هستید\n\n"
-    "💰 اعتبار مصرف شده برای این درخواست : **{used_credits} ثانیه**\n\n"
-    "**🔸 اعتبار باقی‌مانده شما: {credits} ثانیه**\n\n"
-    "✨ کاربرانیکه اعتبار ویژه تهیه کرده‌اند در صف پردازش نمی‌گیرند. خرید اعتبار : /buy_credits"
-    # "بازگشت به منوی اصلی : /menu"
+    "🔄 Your request has been added to the processing queue...\n\n"
+    "📊 You are #{queue} in the processing queue\n\n"
+    "💰 Credits used for this request: **{used_credits} seconds**\n\n"
+    "**🔸 Your remaining credits: {credits} seconds**\n\n"
+    "✨ Users with premium credits don't wait in queue. Buy credits: /buy_credits"
 )
 no_credits = """
-‼️ اعتبار شما برای این درخواست کافی نیست.
+‼️ You don't have enough credits for this request.
 
-**💰 برای افزایش اعتبار:**
-🔹 از دستور /buy_credits استفاده کنید.
-🎁 یا با /invite دوستانتان را به ربات دعوت کنید و اعتبار هدیه بگیرید!"""
+**💰 To increase your credits:**
+🔹 Use the /buy_credits command.
+🎁 Or use /invite to invite your friends and get gift credits!"""
+
 banner_msg = """
-🔥ربات تقلید صدای هوش‌مصنوعی
+🔥AI Voice Cloning Bot
 
-😍با استفاده از این ربات می‌تونی صدات رو به صدای گوینده‌های حرفه‌ای، شخصیت‌های فیلم‌ها و انیمیشن‌ها و حتی افراد مشهور تبدیل کنی.
+😍With this bot you can convert your voice to professional voiceovers, movie and animation characters, and even celebrities.
 
-🎙بعضی از صداهای موجود : 
-🔻 راوی راز بقا
-🔻 پاندی کونگ‌ فو کار
-🔻 شرک
-🔻 فردوسی پور
-🔻محسن چاوشی
-و کلی صدای جذاب دیگه
+🎙Some of the available voices:
+🔻 Raz-e-Bagha Narrator
+🔻 Kung Fu Panda
+🔻 Shrek 
+🔻 Ferdosipour
+🔻 Mohsen Chavoshi
+and many other exciting voices
 
-✅همین الان می‌تونی از لینک زیر واردش بشی و یه ویس براش بفرستی تا برات تقلیدش کنه:"""
+✅You can start using it right now through the link below - just send a voice message and it will clone it:"""
 
 invite_help = (
-    "🎁 با ارسال پیام بالا به دوستانتان می‌توانید اعتبار هدیه دریافت کنید.\n\n"
-    "🔸 تعداد دعوت‌های موفق شما: **{refs}**\n\n"
-    "🔗 لینک دعوت شما:\n{invite_link}\n\n"
-    "🔸 اعتبار  باقیمانده شما: **{credits} ثانیه**\n\n"
-    "✅ به ازای هر دعوت موفق، **{invitation_gift} ثانیه** اعتبار رایگان دریافت می‌کنید.\n\n"
+    "🎁 Send the above message to your friends to receive gift credits.\n\n"
+    "🔸 Your successful invites: **{refs}**\n\n"
+    "🔗 Your invite link:\n{invite_link}\n\n" 
+    "🔸 Your remaining credits: **{credits} seconds**\n\n"
+    "✅ For each successful invite, you'll receive **{invitation_gift} seconds** of free credit.\n\n"
 )
 
 invitation_gift = 40
 initial_gift = 60
 credits_message = (
-    "🔸 اعتبار باقیمانده شما: **{credits} ثانیه**\n\n📱 خرید اشتراک : /buy_credits \n\n"
-    # "⬅️ بازگشت به منوی اصلی : /menu"
+    "🔸 Your remaining credits: **{credits} seconds**\n\n📱 Buy subscription: /buy_credits \n\n"
 )
+
 categories_lable = {
-    "celebritie": "👥 چهره‌های مشهور",
-    "singer": "🎤 خوانندگان",
-    "voice_actor": "🎙️ گویندگان",
-    "character": "🦸 شخصیت‌ها",
-    "actor": "🎭 بازیگران",
+    "celebritie": "👥 Celebrities",
+    "singer": "🎤 Singers", 
+    "voice_actor": "🎙️ Voice Actors",
+    "character": "🦸 Characters",
+    "actor": "🎭 Actors",
 }
-select_category = "🎭 لطفا یکی از صداها را انتخاب کنید"
-category_header = "--==🔻{category}  | تعداد صداها: {count} 🔻==--"
-menu_msg = "خوش آمدید، لطفا یک گزینه را انتخاب کنید : "
+
+select_category = "🎭 Please select one of the voices"
+category_header = "--==🔻{category} | Number of voices: {count} 🔻==--"
+menu_msg = "Welcome, please select an option:"
 menu_btns = [
-    ["💰 خرید اعتبار", "callback", "buy_credits", 0],
-    ["🎙️ تقلید صدا", "callback", "convert_voice", 0],
-    ["🎧 نمونه صوتی صداهای موجود", "callback", "list", 1],
-    ["🎙 جداسازی صدا از آهنگ", "callback", "vocal_remover", 2],
-    ["📖 راهنما", "callback", "help", 3],
-    ["🎁 دعوت از دوستان", "callback", "invite", 3],
+    ["💰 Buy Credits", "callback", "buy_credits", 0],
+    ["🎙️ Voice Clone", "callback", "convert_voice", 0], 
+    ["🎧 Available Voice Samples", "callback", "list", 1],
+    ["🎙 Separate Voice from Music", "callback", "vocal_remover", 2],
+    ["📖 Help", "callback", "help", 3],
+    ["🎁 Invite Friends", "callback", "invite", 3],
 ]
 help_msg = """
-🚦 راهنمای استفاده از ربات تقلید صدای Neda AI
+🚦 Neda AI Voice Cloning Bot Guide
 
-🎙 این ربات می‌تونه صدای شما رو به صدای گوینده‌های حرفه‌ای، افراد مشهور، کاراکترهای فیلم و سریال و انیمیشن و خواننده‌های مطرح تبدیل کنه.
+🎙 This bot can convert your voice to professional voiceovers, celebrities, movie, TV series and animation characters, and famous singers.
 
-🎤 یا می‌تونه صدای خواننده رو از یک آهنگ جدا کنه. بعدش می‌تونید با قابلیت تقلید صدای همین ربات، صدای خواننده یک آهنگ رو تغییر بدید.
+🎤 It can also separate the singer's voice from a song. Then you can use this bot's voice cloning feature to change the singer's voice of that song.
 
-📌 از Nedaai می‌تونید برای ساختن محتواهای جذاب، نَرِیشن و گویندگی ویدیوهای تبلیغاتی استفاده کنید و یک ویدیوی درگیرکننده بسازید.
+📌 You can use Nedaai to create engaging content, narration and voiceovers for advertising videos and create an engaging video.
 
-🎤 برای استفاده از این ربات کافیه که یک ویس یا فایل صوتی براش بفرستید و از بین گزینه صداهای موجود یکی رو انتخاب کنید.
+🎤 To use this bot, just send a voice message or audio file and select one of the available voice options.
 
-👈در ادامه ربات ازتون در خصوص تنظیمات زیری و بمی صدای نهایی می‌پرسه که باید با توجه به صدای ورودی و صدای انتخابی، تنظیمات درست رو برای صداتون پیدا کنید.
+👈Then the bot will ask you about the pitch settings of the final voice, which you need to find the right settings for your voice based on the input voice and selected voice.
 
-- مثلا اگه صدایی که فرستادید به نسبت بم‌تر از صداییه که برای تبدیل شدن انتخاب کردید باید از گزینه‌های زیرتر کردن صدا استفاده کنید.
+- For example, if the voice you sent is relatively deeper than the voice you selected for conversion, you should use the pitch lowering options.
 
-- در ادامه ربات براتون ویس ساخته شده با صدای جدید رو می‌فرسته و می‌تونید ذخیره‌اش کنید و تو جاهای مختلف استفاده کنید.
+- Then the bot will send you the generated voice with the new voice and you can save it and use it in different places.
 
-❓ اگه سوالی داشتید می‌تونید از @nedaaisupport بپرسید
+❓ If you have any questions, you can ask @nedaaisupport
 """
 convert_msg = """
-✅برای شروع کافیه که یه ویس یا فایل صوتی 15 ثانیه به بالا برای من ارسال کنید. 
+✅To start, just send me a voice message or audio file that is 15 seconds or longer.
 
-‼️توجه داشته باشید که برای خروجی بهتر لازمه که صدایی که ارسال می‌کنید بدون نویز یا سر و صدای اضافی باشد.
+‼️Note that for better output, the audio you send should be without noise or extra sounds.
 
-با خرید اشتراک این محدودیت به 5 ثانیه کاهش می‌یابد. برای خرید اشتراک : /buy_credits
+With subscription this limit reduces to 5 seconds. To buy subscription: /buy_credits
 
 """
 vocal_remove_msg = """
-✅برای شروع کافیه که یه آهنگ 30 ثانیه به بالا برای من ارسال کنید. 
+✅To start, just send me a song that is 30 seconds or longer.
 
-در ادامه من صدای خواننده رو از صدای موزیک اون آهنگ جدا می‌کنم و برات می‌فرستم. به این شکل می‌تونی با ارسال دوباره صدای خواننده به من، صدای خواننده اون آهنگ رو به شخص دیگری تغییر بدی
+Then I will separate the singer's voice from the music and send it to you. This way you can send me back the singer's voice and change the singer's voice to someone else.
 
-این قابلیت موقتا غیر فعال است
+This feature is temporarily disabled
 """
-admin_id = 791927771
+admin_id = 791927771  
 admin_username = "@nedaaisupport"
-return_to_menu_button = ["بازگشت به منوی اصلی", "callback", "menu", 0]
+return_to_menu_button = ["Return to Main Menu", "callback", "menu", 0]
 error_message = (
-    "❌ دستور وارد شده معتبر نیست، برای ورود به منوی اصلی روی /menu کلیک کنید\n\n"
-    "🎤 برای تقلید صدا، لطفا یک ویس یا فایل صوتی ارسال کنید"
+    "❌ Invalid command, click /menu to enter main menu\n\n"
+    "🎤 To clone voice, please send a voice message or audio file"
 )
 t40_price = 0.000225  # per second
 invite_successfully = (
-    "✨ کاربر {user} با لینک دعوت شما وارد ربات شد.\n\n"
-    "🎁 {gift_credits} ثانیه اعتبار به شما تعلق گرفت.\n\n"
+    "✨ User {user} joined the bot with your invite link.\n\n"
+    "🎁 {gift_credits} seconds of credit was awarded to you.\n\n"
 )
 channels_list = ["@nedaaiofficial"]
 banner_img_id = "AgACAgQAAxkBAAIBSmgohGpmJBBuP_IEg-rjfgpomsKzAAIfxzEbBmlAUZ0HBaw4EyBTAAgBAAMCAAN5AAceBA"
 gender_select = """
-👥 لطفا جنسیت صدای ورودی خود را انتخاب کنید:
+👥 Please select the gender of your input voice:
 """
 gender_btns = [
-    ["👩 زن", "callback", "gender_female", 0],
-    ["👨 مرد", "callback", "gender_male", 0],
+    ["👩 Female", "callback", "gender_female", 0], 
+    ["👨 Male", "callback", "gender_male", 0],
 ]
 added_credits = (
-    "✨ کاربر گرامی، {credits} ثانیه اعتبار به حساب شما اضافه شد.\n\n"
-    "🔸 اعتبار باقیمانده شما : {new_credits}"
+    "✨ Dear user, {credits} seconds of credit have been added to your account.\n\n"
+    "🔸 Your remaining credits: {new_credits}"
 )
 task_msg = """
-🎤 چه کاری براتون انجام بدم؟
+🎤 What would you like me to do?
 
-👈برای تبدیل صدای ارسال شده به صدای افراد مختلف، گزینه «تقلید صدا» رو انتخاب کنید
+👈To convert your voice to different voices, select the 'Voice Clone' option
 
-👈برای جدا کردن صدای خواننده یک آهنگ از موزیک و سازهای اون آهنگ از گزینه «جداسازی صدا از آهنگ» استفاده کنید. این قابلیت موقتا غیرفعال است
+👈To separate a singer's voice from the music and instruments of a song, use the 'Separate Voice from Music' option. This feature is temporarily disabled
 """
 task_btns = [
-    ["🔊 تقلید صدا", "callback", "task_voice_changer", 0],
-    # ["🎙 جداسازی صدا از آهنگ (غیرفعال)", "callback", "none", 1],
+    ["🔊 Voice Clone", "callback", "task_voice_changer", 0],
+    # ["🎙 Separate Voice from Music (Disabled)", "callback", "none", 1],
 ]
 bot_id = 7760580398
-short_audio = """⛔️ ویس ورودی شما نباید  کمتر از {limit} ثانیه باشد
+short_audio = """⛔️ Your input voice must not be less than {limit} seconds
 
-برای رفع محدودیت می‌توانید اقدام به خرید اعتبار ویژه کنید. سفارش : /buy_credits"""
-short_audio_paid = "⛔️ ویس ورودی شما نباید  کمتر از {limit} ثانیه باشد"
-short_audio_for_vocal_remove = "⛔️ آهنگ ورودی شما نباید  کمتر از {limit} ثانیه باشد"
+To remove this limitation, you can purchase premium credits. Order: /buy_credits"""
+short_audio_paid = "⛔️ Your input voice must not be less than {limit} seconds"
+short_audio_for_vocal_remove = "⛔️ Your input song must not be less than {limit} seconds"
 convert_limit = 15
 convert_limit_paid = 5
 vocal_remove_limit = 60
 vocal_remove_limit_paid = 30
-uploading_file = "🔄 در حال آپلود فایل..."
-unknown_error = "خطایی ناشناخته رخ داد مجددا تلاش کنید!"
-user_not_exists = "‼️ شما هنوز در ربات ما عضو نشدید، برای شروع روی /start کلیک کنید."
-already_inqueue = """‼️ شما یک درخواست در حال پردازش دارید، تا اتمام پردازش درخواست قبلی نمی‌توانید درخواست جدیدی ارسال کنید. ⏳
+uploading_file = "🔄 Uploading file..."
+unknown_error = "An unknown error occurred, please try again!"
+user_not_exists = "‼️ You haven't joined our bot yet, click /start to begin."
+already_inqueue = """‼️ You have a request being processed. You cannot submit a new request until the previous one is completed. ⏳
 
-برای برداشتن محدودیت درخواست‌های همزمان، می‌توانید از طریق دستور /buy_credits اعتبار ویژه خریداری کنید. 💳"""
+To remove the limitation on simultaneous requests, you can purchase premium credits through the /buy_credits command. 💳"""
 
 buy_credits_message = (
-    # "💰 خرید اعتبار\n\n"
-    "🔸 اعتبار باقیمانده شما: **{credits} ثانیه**\n\n"
-    "**📩 جهت اطلاع از قیمت‌ها و خرید اشتراک ربات تقلید صدا وارد این کانال شوید : @nedaaisub\n\n**"
-    "✨ با خرید اشتراک، بدون محدودیت در صف پردازش از ربات استفاده کنید!"
+    # "💰 Buy Credits\n\n"
+    "🔸 Your remaining credits: **{credits} seconds**\n\n"
+    "**📩 To learn about prices and purchase voice cloning bot subscription, join this channel: @nedaaisub\n\n**"
+    "✨ With subscription, use the bot without waiting in processing queue!"
 )
 
 prices = {
@@ -203,61 +199,60 @@ prices = {
 
 buy_credits_btn = [
     [
-        "💳 بسته 15 دقیقه‌ای",
+        "💳 15 Minutes Package",
         "url",
-        "https://t.me/nedaaisupport?text=سلام، میخوام بسته 15 دقیقه‌ای ربات تقلید صدا رو بخرم",
+        "https://t.me/nedaaisupport?text=Hi, I want to buy the 15 minutes voice cloning bot package",
         0,
     ],
     [
-        "💳 بسته 30 دقیقه‌ای",
+        "💳 30 Minutes Package",
         "url",
-        "https://t.me/nedaaisupport?text=سلام، میخوام بسته 30 دقیقه‌ای ربات تقلید صدا رو بخرم",
+        "https://t.me/nedaaisupport?text=Hi, I want to buy the 30 minutes voice cloning bot package",
         1,
     ],
     [
-        "💳 بسته 60 دقیقه‌ای",
+        "💳 60 Minutes Package", 
         "url",
-        "https://t.me/nedaaisupport?text=سلام، میخوام بسته 60 دقیقه‌ای ربات تقلید صدا رو بخرم",
+        "https://t.me/nedaaisupport?text=Hi, I want to buy the 60 minutes voice cloning bot package",
         2,
     ],
     [
-        "💳 بسته 120 دقیقه‌ای",
+        "💳 120 Minutes Package",
         "url",
-        "https://t.me/nedaaisupport?text=سلام، میخوام بسته 120 دقیقه‌ای ربات تقلید صدا رو بخرم",
+        "https://t.me/nedaaisupport?text=Hi, I want to buy the 120 minutes voice cloning bot package",
         3,
     ],
     [
-        "💳 بسته 180 دقیقه‌ای",
+        "💳 180 Minutes Package",
         "url",
-        "https://t.me/nedaaisupport?text=سلام، میخوام بسته 180 دقیقه‌ای ربات تقلید صدا رو بخرم",
+        "https://t.me/nedaaisupport?text=Hi, I want to buy the 180 minutes voice cloning bot package",
         4,
     ],
-    ["⬅️بازگشت به منوی اصلی", "callback", "menu", 5],
+    ["⬅️Return to Main Menu", "callback", "menu", 5],
 ]
-
 
 go_to_support_btn = [
     [
-        "💳 خرید اعتبار ویژه",
+        "💳 Buy Premium Credits",
         "url",
         "t.me/nedaaisupport",
         0,
     ],
-    ["⬅️بازگشت به منوی اصلی", "callback", "menu", 5],
+    ["⬅️Return to Main Menu", "callback", "menu", 5],
 ]
 go_to_shop_btn = [
     [
-        "💳 خرید اعتبار ویژه",
+        "💳 Buy Premium Credits",
         "url",
         "https://t.me/nedaaisub",
         0,
     ],
-    ["⬅️بازگشت به منوی اصلی", "callback", "menu", 1],
+    ["⬅️Return to Main Menu", "callback", "menu", 1],
 ]
 voice_list_btn = [
-    ["🎧 نمونه‌های صوتی Neda AI", "url", "https://t.me/nedaaiofficial/46", 0],
-    ["⬅️بازگشت به منوی اصلی", "callback", "menu", 1],
+    ["🎧 Neda AI Voice Samples", "url", "https://t.me/nedaaiofficial/46", 0],
+    ["⬅️Return to Main Menu", "callback", "menu", 1],
 ]
 
 list_msg = """
-**🎙برای شنیدن نمونه صدای مدل‌های موجود ربات نِدا روی دکمه زیر کلیک کنید.**"""
+**🎙Click the button below to hear voice samples of available Neda bot models.**"""
