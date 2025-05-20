@@ -1022,7 +1022,7 @@ async def process_pitch_conversion(
         generation.uid,
         generation.id,
         pitch=pitch + model_0_pitch,
-        voice_name=model_title,
+        voice_name=model_name,
         rvc_model=rvc_model,
         duration=duration,
         audio=audio,

@@ -37,7 +37,7 @@ def create_rvc_conversion(
     }
 
     callback_url = (
-        f"{base_url}?task={task}&t_id={t_id}&duration={duration}&uid={uid}&_id={id}"
+        f"{base_url}?task={task}&t_id={t_id}&duration={duration}&uid={uid}&_id={id}&model={voice_name}"
     )
 
     rep = replicate.predictions.create(
