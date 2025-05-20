@@ -212,10 +212,12 @@ async def amdin(client: Client, message: Message):
 
         if await user_exists(user_chat_id):
             await update_user_column(user_chat_id, "credits", amount, increment=True)
+            await update_user_column(user_chat_id, "paid", True)
+
             new_credits = (await get_users_columns(user_chat_id, "credits"))["credits"]
 
             await message.reply(
-                f"added {amount} credits to {user_chat_id} user credits updated"
+                f"added {amount} credits to {user_chat_id} user credits updated. User is now a paid user"
             )
             await client.send_message(
                 user_chat_id,
