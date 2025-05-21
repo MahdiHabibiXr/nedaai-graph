@@ -1,7 +1,6 @@
 import json
 import logging
 import os
-
 import dotenv
 from pyrogram import Client, filters, idle
 from pyrogram.types import (
@@ -18,6 +17,8 @@ import msgs
 import rvc
 import uvr
 import logfire
+import voice_utils
+from io import BytesIO
 
 # configure logfire
 logfire.configure(token="pylf_v1_us_twTVZHLXCZzLwrCJ292l3y5cgrsgN4t6DYfyCyTcMpWb")
@@ -426,11 +427,8 @@ async def callbacks(client: Client, callback_query: CallbackQuery):
                 task = data.replace("task_", "")
 
                 file = f"files/{chat_id}/voice.ogg"
-                
+
                 try:
-                    # file_url = await upload_file(
-                    #     file, file_name=f"nedaai/{chat_id}/input_voice.ogg"
-                    # )
                     file_url = await tapsage_upload(file)
 
                 except Exception as e:
@@ -455,8 +453,14 @@ async def callbacks(client: Client, callback_query: CallbackQuery):
 
                 if task == "voice_changer":
                     # ask user the gender
-                    buttons = create_reply_markup(msgs.gender_btns)
-                    await message.reply(msgs.gender_select, reply_markup=buttons)
+                    # buttons = create_reply_markup(msgs.model)
+                    # await message.reply(msgs.gender_select, reply_markup=buttons)
+
+                    buttons = create_reply_markup(generate_model_list(MODELS_DIR))
+                    await message.reply(
+                        msgs.voice_select,
+                        reply_markup=buttons,
+                    )
 
                 # vocal remover disabled
                 {
@@ -498,35 +502,45 @@ async def callbacks(client: Client, callback_query: CallbackQuery):
             # check the gender of input and selected voice
             model_data = get_value_from_json(MODELS_DIR, model_name)
             model_gender = model_data["gender"]
+            model_pitch = model_data["pitch"]
 
-            # if model_data["gender"] is Gender.male.value:
-            #     model_gender = Gender.male
-            # else:
-            #     model_gender = Gender.female
-
-            # user_data = await get_users_columns(chat_id, "gender")
-            # user_data = get_users_columns(chat_id, "gender")
             user_gender = generation.gender.value
 
-            pitch = 0
+            file = f"files/{chat_id}/voice.ogg"
+
+            with open(file, "rb") as f:
+                source_audio_file = f.read()
+
+            pitch_value = voice_utils.process_pitch_shift(
+                BytesIO(source_audio_file), model_pitch
+            )
+
+            pitch_value = round(pitch_value)
+
+            await message.reply(f"✅ Recommended pitch shift: {pitch_value} semitones")
+
+            await update_generation_column(generation.uid, "pitch", pitch_value)
+
+            await process_pitch_conversion(chat_id, data=None, message=message)
+
             # same gender for user input and selected model
-            if user_gender == model_gender:
-                buttons = create_reply_markup(msgs.pitch_btns)
-                await message.reply(msgs.pitch_select, reply_markup=buttons)
+            # if user_gender == model_gender:
+            #     buttons = create_reply_markup(msgs.pitch_btns)
+            #     await message.reply(msgs.pitch_select, reply_markup=buttons)
 
             # different gender for model and input
-            else:
-                # male to female => 12
-                if (user_gender == "male") and (model_gender == "female"):
-                    pitch = 12
+            # else:
+            #     # male to female => 12
+            #     if (user_gender == "male") and (model_gender == "female"):
+            #         pitch = 12
 
-                # female to male => -12
-                elif (user_gender == "female") and (model_gender == "male"):
-                    pitch = -12
+            #     # female to male => -12
+            #     elif (user_gender == "female") and (model_gender == "male"):
+            #         pitch = -12
 
-                await process_pitch_conversion(
-                    chat_id, data=None, message=message, pitch_based_on_gender=pitch
-                )
+            #     await process_pitch_conversion(
+            #         chat_id, data=None, message=message, pitch_based_on_gender=pitch
+            #     )
 
         # selected the gender
         elif data.startswith("gender_"):
@@ -955,9 +969,7 @@ def joined_channels_button(not_joined_channels):
     return buttons
 
 
-async def process_pitch_conversion(
-    chat_id: int, data, message, pitch_based_on_gender=None
-):
+async def process_pitch_conversion(chat_id: int, data, message):
     # check if user has enough credits
     generation = await get_last_generation_by_chat_id(chat_id)
     duration = generation.duration
@@ -973,13 +985,13 @@ async def process_pitch_conversion(
     new_credits = credits - duration
     await update_user_column(chat_id, "credits", new_credits)
 
-    # get pitch | if data has been passed it means it is calling from pitch selection
-    if data:
-        pitch = int(data.replace("pitch_", ""))
+    # # get pitch | if data has been passed it means it is calling from pitch selection
+    # if data:
+    #     pitch = int(data.replace("pitch_", ""))
 
-    # it means it has beed detected from gender selection
-    elif pitch_based_on_gender is not None:
-        pitch = pitch_based_on_gender
+    # # it means it has beed detected from gender selection
+    # elif pitch_based_on_gender is not None:
+    #     pitch = pitch_based_on_gender
 
     # get model from database
     model_name = generation.model_name
@@ -988,7 +1000,8 @@ async def process_pitch_conversion(
     model_data = get_value_from_json(MODELS_DIR, model_name)
     model_title = model_data["name"]
     model_url = model_data["url"]
-    model_0_pitch = model_data["pitch"]
+    # model_0_pitch = model_data["pitch"]
+    pitch_shift = generation.pitch
     audio = generation.input_url
     rvc_model = model_data["type"]
 
@@ -999,7 +1012,7 @@ async def process_pitch_conversion(
             {
                 "status": Status.inqueue,
                 "cost": duration,
-                "pitch": pitch + model_0_pitch,
+                "pitch": pitch_shift,
                 "model_url": model_url,
             },
         )
@@ -1021,7 +1034,7 @@ async def process_pitch_conversion(
         chat_id,
         generation.uid,
         generation.id,
-        pitch=pitch + model_0_pitch,
+        pitch=pitch_shift,
         voice_name=model_name,
         rvc_model=rvc_model,
         duration=duration,
@@ -1035,7 +1048,7 @@ async def process_pitch_conversion(
             "replicate_id": prediction,
             "status": Status.processing,
             "cost": duration,
-            "pitch": pitch + model_0_pitch,
+            "pitch": pitch_shift,
             "model_url": model_url,
         },
     )

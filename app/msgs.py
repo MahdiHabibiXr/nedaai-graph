@@ -106,7 +106,7 @@ help_msg = """
 
 🎤 To use this bot, just send a voice message or audio file and select one of the available voice options.
 
-👈Then the bot will ask you about the pitch settings of the final voice, which you need to find the right settings for your voice based on the input voice and selected voice.
+Then the bot will ask you about the pitch settings of the final voice, which you need to find the right settings for your voice based on the input voice and selected voice.
 
 - For example, if the voice you sent is relatively deeper than the voice you selected for conversion, you should use the pitch lowering options.
 
@@ -157,9 +157,9 @@ added_credits = (
 task_msg = """
 🎤 What would you like me to do?
 
-👈To convert your voice to different voices, select the 'Voice Clone' option
+To convert your voice to different voices, select the 'Voice Clone' option
 
-👈To separate a singer's voice from the music and instruments of a song, use the 'Separate Voice from Music' option. This feature is temporarily disabled
+To separate a singer's voice from the music and instruments of a song, use the 'Separate Voice from Music' option. This feature is temporarily disabled
 """
 task_btns = [
     ["🔊 Voice Clone", "callback", "task_voice_changer", 0],

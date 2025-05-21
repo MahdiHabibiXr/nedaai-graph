@@ -5,7 +5,6 @@ replicate
 ufiles
 python-dotenv
 pymongo
-fastapi[standard]
 python-multipart
 pydantic
 uvicorn
@@ -14,3 +13,8 @@ beanie
 motor
 logfire
 aiohttp
+librosa
+soundfile
+pydub
+praat-parselmouth
+numpy
