@@ -100,7 +100,7 @@ help_msg = """
 
 🎤 It can also separate the singer's voice from a song. Then you can use this bot's voice cloning feature to change the singer's voice of that song.
 
-📌 You can use Nedaai to create engaging content, narration and voiceovers for advertising videos and create an engaging video.
+📌 You can use Avagen to create engaging content, narration and voiceovers for advertising videos and create an engaging video.
 
 🎤 To use this bot, just send a voice message or audio file and select one of the available voice options.
 
@@ -110,7 +110,7 @@ Then the bot will ask you about the pitch settings of the final voice, which you
 
 - Then the bot will send you the generated voice with the new voice and you can save it and use it in different places.
 
-❓ If you have any questions, you can ask @nedaaisupport
+❓ If you have any questions, you can ask @avagensupport
 """
 convert_msg = """
 ✅To start, just send me a voice message or audio file that is 15 seconds or longer.
@@ -128,7 +128,7 @@ Then I will separate the singer's voice from the music and send it to you. This 
 This feature is temporarily disabled
 """
 admin_id = 791927771
-admin_username = "@nedaaisupport"
+admin_username = "@avagensupport"
 return_to_menu_button = ["Return to Main Menu", "callback", "menu", 0]
 error_message = (
     "❌ Invalid command, click /menu to enter main menu\n\n"
@@ -185,7 +185,7 @@ To remove the limitation on simultaneous requests, you can purchase premium cred
 buy_credits_message = (
     # "💰 Buy Credits\n\n"
     "🔸 Your remaining credits: **{credits} seconds**\n\n"
-    "**📩 To learn about prices and purchase voice cloning bot subscription, join this channel: @nedaaisub\n\n**"
+    "**📩 To learn about prices and purchase voice cloning bot subscription, join this channel: @avagensub\n\n**"
     "✨ With subscription, use the bot without waiting in processing queue!"
 )
 
