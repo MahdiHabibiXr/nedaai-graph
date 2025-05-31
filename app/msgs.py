@@ -65,20 +65,18 @@ and many other exciting voices
 invite_help = (
     "🎁 Send the above message to your friends to receive gift credits.\n\n"
     "🔸 Your successful invites: **{refs}**\n\n"
-    "🔗 Your invite link:\n{invite_link}\n\n" 
+    "🔗 Your invite link:\n{invite_link}\n\n"
     "🔸 Your remaining credits: **{credits} seconds**\n\n"
     "✅ For each successful invite, you'll receive **{invitation_gift} seconds** of free credit.\n\n"
 )
 
 invitation_gift = 40
 initial_gift = 60
-credits_message = (
-    "🔸 Your remaining credits: **{credits} seconds**\n\n📱 Buy subscription: /buy_credits \n\n"
-)
+credits_message = "🔸 Your remaining credits: **{credits} seconds**\n\n📱 Buy subscription: /buy_credits \n\n"
 
 categories_lable = {
     "celebritie": "👥 Celebrities",
-    "singer": "🎤 Singers", 
+    "singer": "🎤 Singers",
     "voice_actor": "🎙️ Voice Actors",
     "character": "🦸 Characters",
     "actor": "🎭 Actors",
@@ -89,7 +87,7 @@ category_header = "--==🔻{category} | Number of voices: {count} 🔻==--"
 menu_msg = "Welcome, please select an option:"
 menu_btns = [
     ["💰 Buy Credits", "callback", "buy_credits", 0],
-    ["🎙️ Voice Clone", "callback", "convert_voice", 0], 
+    ["🎙️ Voice Clone", "callback", "convert_voice", 0],
     ["🎧 Available Voice Samples", "callback", "list", 1],
     ["🎙 Separate Voice from Music", "callback", "vocal_remover", 2],
     ["📖 Help", "callback", "help", 3],
@@ -129,7 +127,7 @@ Then I will separate the singer's voice from the music and send it to you. This 
 
 This feature is temporarily disabled
 """
-admin_id = 791927771  
+admin_id = 791927771
 admin_username = "@nedaaisupport"
 return_to_menu_button = ["Return to Main Menu", "callback", "menu", 0]
 error_message = (
@@ -141,13 +139,13 @@ invite_successfully = (
     "✨ User {user} joined the bot with your invite link.\n\n"
     "🎁 {gift_credits} seconds of credit was awarded to you.\n\n"
 )
-channels_list = ["@nedaaiofficial"]
+channels_list = ["@AvagenAI"]
 banner_img_id = "AgACAgQAAxkBAAIBSmgohGpmJBBuP_IEg-rjfgpomsKzAAIfxzEbBmlAUZ0HBaw4EyBTAAgBAAMCAAN5AAceBA"
 gender_select = """
 👥 Please select the gender of your input voice:
 """
 gender_btns = [
-    ["👩 Female", "callback", "gender_female", 0], 
+    ["👩 Female", "callback", "gender_female", 0],
     ["👨 Male", "callback", "gender_male", 0],
 ]
 added_credits = (
@@ -165,12 +163,14 @@ task_btns = [
     ["🔊 Voice Clone", "callback", "task_voice_changer", 0],
     # ["🎙 Separate Voice from Music (Disabled)", "callback", "none", 1],
 ]
-bot_id = 7760580398
+bot_id = 6991498961
 short_audio = """⛔️ Your input voice must not be less than {limit} seconds
 
 To remove this limitation, you can purchase premium credits. Order: /buy_credits"""
 short_audio_paid = "⛔️ Your input voice must not be less than {limit} seconds"
-short_audio_for_vocal_remove = "⛔️ Your input song must not be less than {limit} seconds"
+short_audio_for_vocal_remove = (
+    "⛔️ Your input song must not be less than {limit} seconds"
+)
 convert_limit = 15
 convert_limit_paid = 5
 vocal_remove_limit = 60
@@ -211,7 +211,7 @@ buy_credits_btn = [
         1,
     ],
     [
-        "💳 60 Minutes Package", 
+        "💳 60 Minutes Package",
         "url",
         "https://t.me/nedaaisupport?text=Hi, I want to buy the 60 minutes voice cloning bot package",
         2,
@@ -235,7 +235,7 @@ go_to_support_btn = [
     [
         "💳 Buy Premium Credits",
         "url",
-        "t.me/nedaaisupport",
+        "t.me/avagensupport",
         0,
     ],
     ["⬅️Return to Main Menu", "callback", "menu", 5],
@@ -244,15 +244,18 @@ go_to_shop_btn = [
     [
         "💳 Buy Premium Credits",
         "url",
-        "https://t.me/nedaaisub",
+        "https://t.me/avagensub",
         0,
     ],
     ["⬅️Return to Main Menu", "callback", "menu", 1],
 ]
 voice_list_btn = [
-    ["🎧 Neda AI Voice Samples", "url", "https://t.me/nedaaiofficial/46", 0],
+    ["🎧 Neda AI Voice Samples", "url", "https://t.me/AvagenAI/30", 0],
     ["⬅️Return to Main Menu", "callback", "menu", 1],
 ]
 
 list_msg = """
 **🎙Click the button below to hear voice samples of available Neda bot models.**"""
+
+tts_msg = """
+Write the text you want to convert to voice."""
