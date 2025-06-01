@@ -517,7 +517,7 @@ async def callbacks(client: Client, callback_query: CallbackQuery):
 
             pitch_value = round(pitch_value)
 
-            await message.reply(f"✅ Recommended pitch shift: {pitch_value} semitones")
+            # await message.reply(f"✅ Recommended pitch shift: {pitch_value} semitones")
 
             await update_generation_column(generation.uid, "pitch", pitch_value)
 
