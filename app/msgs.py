@@ -53,11 +53,12 @@ banner_msg = """
 😍With this bot you can convert your voice to professional voiceovers, movie and animation characters, and even celebrities.
 
 🎙Some of the available voices:
-🔻 Raz-e-Bagha Narrator
-🔻 Kung Fu Panda
-🔻 Shrek 
-🔻 Ferdosipour
-🔻 Mohsen Chavoshi
+🔻 Sponge Bob
+🔻 Billie Eilish
+🔻 Rick Sanchez 
+🔻 Tupac Shakur
+🔻 Roandlo
+🔻 Messi
 and many other exciting voices
 
 ✅You can start using it right now through the link below - just send a voice message and it will clone it:"""
