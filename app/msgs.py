@@ -140,7 +140,7 @@ invite_successfully = (
     "🎁 {gift_credits} seconds of credit was awarded to you.\n\n"
 )
 channels_list = ["@AvagenAI"]
-banner_img_id = "AgACAgQAAxkBAAIBSmgohGpmJBBuP_IEg-rjfgpomsKzAAIfxzEbBmlAUZ0HBaw4EyBTAAgBAAMCAAN5AAceBA"
+banner_img_id = "AgACAgQAAxkBAAIKaGg8YzKxb5Mt-EmtLJrEr7PhOhUpAAJ6yjEbUzvgUXk_2nfxSTG9AAgBAAMCAAN4AAceBA"
 gender_select = """
 👥 Please select the gender of your input voice:
 """
